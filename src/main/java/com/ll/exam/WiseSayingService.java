@@ -21,4 +21,21 @@ public class WiseSayingService {
   public List<WiseSaying> findAll() {
     return wiseSayings;
   }
+
+  public WiseSaying findById(int id) {
+    for(WiseSaying wiseSaying : wiseSayings) {
+      if(wiseSaying.id == id) return wiseSaying;
+    }
+
+    return null;
+  }
+
+  public void delete(WiseSaying wiseSaying) {
+    wiseSayings.remove(wiseSaying);
+  }
+
+  public void update(WiseSaying wiseSaying, String content, String author) {
+    wiseSaying.content = content;
+    wiseSaying.author = author;
+  }
 }

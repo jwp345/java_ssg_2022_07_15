@@ -24,6 +24,20 @@ public class Rq {
     }
   }
 
+  public int getIntParam(String paramName, int defaultValue) {
+    if (queryParams.containsKey(paramName) == false) {
+      return defaultValue;
+    }
+
+    String paramValue = queryParams.get(paramName);
+
+    if (paramValue.length() == 0) {
+      return defaultValue;
+    }
+
+    return Integer.parseInt(paramValue);
+  }
+
   public String getPath() {
     return path;
   }
