@@ -9,9 +9,7 @@ public class WiseSayingService {
     this.lastId = 0;
   }
   public WiseSaying write(String content, String author) {
-    int id = ++lastId;
-
-    WiseSaying wiseSaying = new WiseSaying(lastId, content, author);
+    WiseSaying wiseSaying = new WiseSaying(++lastId, content, author);
     wiseSayings.add(wiseSaying);
 
     return wiseSaying;
