@@ -12,6 +12,7 @@ public class WiseSaying {
     this.content = content;
     this.author = author;
   }
+
   public String toJson() {
     return """
                 {
@@ -23,7 +24,6 @@ public class WiseSaying {
             .stripIndent()
             .formatted(id, content, author)
             .trim();
-
   }
   @Override
   public String toString() {

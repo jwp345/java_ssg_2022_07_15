@@ -9,8 +9,9 @@ public class App {
     this.sc = new Scanner(System.in);
   }
   public void run() {
+    String path = "data.json";
     System.out.println("== 명언 SSG ==");
-    WiseSayingController wiseSayingController = new WiseSayingController(sc);
+    WiseSayingController wiseSayingController = new WiseSayingController(sc, path);
 
     while(true) {
       System.out.print("명령) ");
@@ -29,6 +30,9 @@ public class App {
           break;
         case "수정" :
           wiseSayingController.update(rq);
+          break;
+        case "빌드" :
+          wiseSayingController.save(path);
           break;
         case "종료" :
           return;

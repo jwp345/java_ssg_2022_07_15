@@ -6,9 +6,9 @@ import java.util.List;
 public class WiseSayingService {
   private int lastId;
   private List<WiseSaying> wiseSayings;
-  WiseSayingService() {
+  WiseSayingService(List<WiseSaying> wiseSayings) {
     this.lastId = 0;
-    this.wiseSayings = new ArrayList<>();
+    this.wiseSayings = wiseSayings;
   }
   public WiseSaying write(String content, String author) {
     WiseSaying wiseSaying = new WiseSaying(++lastId, content, author);
@@ -37,5 +37,9 @@ public class WiseSayingService {
   public void update(WiseSaying wiseSaying, String content, String author) {
     wiseSaying.content = content;
     wiseSaying.author = author;
+  }
+
+  public void save(String path) {
+    Util.saveToFile(path, wiseSayings);
   }
 }

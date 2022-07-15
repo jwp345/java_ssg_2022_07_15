@@ -8,9 +8,9 @@ public class WiseSayingController {
   private Scanner sc;
   private WiseSayingService wiseSayingService;
 
-  WiseSayingController(Scanner sc) {
+  WiseSayingController(Scanner sc, String path) {
     this.sc = sc;
-    this.wiseSayingService = new WiseSayingService();
+    this.wiseSayingService = new WiseSayingService(Util.readFromFile(path));
   }
 
   public void write() {
@@ -78,5 +78,8 @@ public class WiseSayingController {
       return 0;
     }
     return id;
+  }
+  public void save(String path) {
+    wiseSayingService.save(path);
   }
 }
