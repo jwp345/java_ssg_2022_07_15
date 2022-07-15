@@ -35,12 +35,8 @@ public class WiseSayingController {
   }
 
   public void delete(Rq rq) {
-    int id = rq.getIntParam("id", 0);
-
-    if (id == 0) {
-      System.out.println("id를 입력해주세요.");
-      return;
-    }
+    int id = getId(rq);
+    if (id == 0) { return; }
 
     WiseSaying wiseSaying = wiseSayingService.findById(id);
     if (wiseSaying == null) {
@@ -53,12 +49,8 @@ public class WiseSayingController {
   }
 
   public void update(Rq rq) {
-    int id = rq.getIntParam("id", 0);
-
-    if (id == 0) {
-      System.out.println("id를 입력해주세요.");
-      return;
-    }
+    int id = getId(rq);
+    if(id == 0) return;
 
     WiseSaying wiseSaying = wiseSayingService.findById(id);
 
@@ -67,7 +59,7 @@ public class WiseSayingController {
       return;
     }
 
-    System.out.println(wiseSaying.content + "명언(기존) : %s");
+    System.out.println("명언(기존) : " + wiseSaying.content);
     System.out.print("명언 : ");
     String content = sc.nextLine();
     System.out.println("작가(기존) : " + wiseSaying.author);
@@ -77,5 +69,14 @@ public class WiseSayingController {
     wiseSayingService.update(wiseSaying, content, author);
 
     System.out.println(id + "번 명언이 수정되었습니다.");
+  }
+
+  public int getId(Rq rq) {
+    int id = rq.getIntParam("id", 0);
+    if (id == 0) {
+      System.out.println("id를 입력해주세요.");
+      return 0;
+    }
+    return id;
   }
 }

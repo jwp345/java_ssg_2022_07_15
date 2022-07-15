@@ -31,7 +31,7 @@ public class App {
           wiseSayingController.update(rq);
           break;
         case "종료" :
-          break;
+          return;
       }
     }
   }
